@@ -1,8 +1,8 @@
 // Zmienne do komunikacji z serwerem
 var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
 var myHeaders = {
-  'X-Client-Id': 'X-Client-Id',
-  'X-Auth-Token': 'X-Auth-Token'
+  'X-Client-Id': '2755',
+  'X-Auth-Token': '09a04a11c21e6d2526c9705cfe596105'
 };
 
 // Naglówki do kazdego zapytania
@@ -14,7 +14,10 @@ $.ajaxSetup({
 $.ajax({
     url: baseUrl + '/board',
     method: 'GET',
+
+
     success: function(response) {
+      console.log(response);
       setupColumns(response.columns);
     }
 });

@@ -5,6 +5,7 @@ function Column(id, name) {    /* Modified */
 	this.id = randomString();
   this.id = id; /* Modified */
   this.name = name || 'No name given';  /* Modified */
+	this.element = createColumn();
 
 	function createColumn() {
 		// TWORZENIE NOWYCH WĘZŁÓW

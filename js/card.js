@@ -16,7 +16,8 @@ function Card(id, name) { /* Modified */
 		});
 
 		card.append(cardDeleteBtn);
-		cardDescription.text(self.name);  /* Modified */
+		cardDescription.text(self.name);
+		card.attr("id", self.id);  /* Modified */
 		card.append(cardDescription)
 		return card;
 	}
@@ -34,3 +35,4 @@ Card.prototype = {
         }
       });
   }
+}

@@ -1,3 +1,13 @@
+var board = {
+	name: 'Tablica Kanban',
+	createColumn: function(column) {
+	  this.element.append(column.element);
+	  initSortable();
+	},
+	element: $('#board .column-container')
+};
+
+
 // OGÓLNA FUNKCJA
 function randomString() {
 	var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ'.split();
@@ -8,15 +18,7 @@ function randomString() {
 	return str;
 }
 
-// TWORZENIE NOWYCH EGZEMPLARZY KOLUMN
-var todoColumn = new Column('Do zrobienia');
-var doingColumn = new Column('W trakcie');
-var doneColumn = new Column('Skończone');
 
-// DODAWANIE KOLUMN DO TABLICY
-board.createColumn(todoColumn);
-board.createColumn(doingColumn);
-board.createColumn(doneColumn);
 
 
 /* Modified */
@@ -36,10 +38,13 @@ $('.create-column')
         });
 });
 
-// TWORZENIE NOWYCH EGZEMPLARZY KART
-var card1 = new Card('Nowe zadanie');
-var card2 = new Card('stworzyc tablice kanban');
 
-// DODAWANIE KART DO KOLUMN
-todoColumn.createCard(card1);
-doingColumn.createCard(card2);
+function initSortable() {
+    $('.card-list').sortable({
+      connectWith: '.card-list',
+      placeholder: 'card-placeholder',
+			receive: function(event, UI){
+				console.log(event, UI);
+						}
+    }).disableSelection();
+  }
